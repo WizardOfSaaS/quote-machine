@@ -1,6 +1,6 @@
 'use client'
 import QuoteItem from "./components/QuoteItem";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const sampleResponse = [
   {
@@ -19,7 +19,6 @@ const sampleResponse = [
 const apiUrl = 'https://api.quotable.io/quotes/random'
 
 export default function Home() {
-  // const quote = sampleResponse[0]
   const [quote, setQuote] = useState('')
 
   const handleButtonClick = async () => {
@@ -27,6 +26,8 @@ export default function Home() {
     const content = await response.json()
     setQuote(content[0])
   }
+
+  useEffect(() => { handleButtonClick() }, [])
 
 
   return (

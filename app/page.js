@@ -16,13 +16,19 @@ const sampleResponse = [
     "dateModified": "2023-04-14"
   }
 ]
-
-function handleButtonClick() {
-  console.log('Button clicked')
-}
+const apiUrl = 'https://api.quotable.io/quotes/random'
 
 export default function Home() {
-  const quote = sampleResponse[0]
+  // const quote = sampleResponse[0]
+  const [quote, setQuote] = useState('')
+
+  const handleButtonClick = async () => {
+    const response = await fetch(apiUrl)
+    const content = await response.json()
+    setQuote(content[0])
+  }
+
+
   return (
     <main className="" id="quote-box">
       <QuoteItem

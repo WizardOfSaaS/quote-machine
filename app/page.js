@@ -1,4 +1,4 @@
-import Image from "next/image";
+'use client'
 import QuoteItem from "./components/QuoteItem";
 
 const sampleResponse = [
@@ -16,6 +16,10 @@ const sampleResponse = [
   }
 ]
 
+function handleButtonClick() {
+  console.log('Button clicked')
+}
+
 export default function Home() {
   const response = sampleResponse[0]
   const quoteText = response["content"]
@@ -26,6 +30,7 @@ export default function Home() {
         text={quoteText}
         author={quoteAuthor}
       />
+      <button onClick={handleButtonClick}>New Quote</button>
     </main>
   );
 }

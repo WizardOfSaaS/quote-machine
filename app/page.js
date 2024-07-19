@@ -29,6 +29,7 @@ export default function Home() {
       const response = await fetch(apiUrl)
       const content = await response.json()
       setQuote(content[0])
+      // setQuote(sampleResponse[0])
       setFailedFetch(false)
       setIsLoading(false)
     } catch {
@@ -43,7 +44,9 @@ export default function Home() {
   return (
     <main className="" id="quote-box">
       {
-        isLoading ? <div>"Loading..."</div> :
+        isLoading ?
+          <QuoteItem
+            quote={{ content: "Loading...", author: "Random Quote Machine" }} /> :
           <QuoteItem
             quote={failedFetch ? { content: failedMessage, author: "Random Quote Machine" } : quote}
           />

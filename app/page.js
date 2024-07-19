@@ -20,21 +20,34 @@ const apiUrl = 'https://api.quotable.io/quotes/random'
 
 export default function Home() {
   const [quote, setQuote] = useState('')
+  const [failedFetch, setFailedFetch] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleButtonClick = async () => {
-    const response = await fetch(apiUrl)
-    const content = await response.json()
-    setQuote(content[0])
+    try {
+      setIsLoading(true)
+      const response = await fetch(apiUrl)
+      const content = await response.json()
+      setQuote(content[0])
+      setFailedFetch(false)
+      setIsLoading(false)
+    } catch {
+      setFailedFetch(true)
+      setIsLoading(false)
+    }
   }
 
   useEffect(() => { handleButtonClick() }, [])
 
-
+  const failedMessage = "Failed to Fetch. Please try again after a few moments..."
   return (
     <main className="" id="quote-box">
-      <QuoteItem
-        quote={quote}
-      />
+      {
+        isLoading ? <div>"Loading..."</div> :
+          <QuoteItem
+            quote={failedFetch ? { content: failedMessage, author: "Random Quote Machine" } : quote}
+          />
+      }
       <button onClick={handleButtonClick}>New Quote</button>
     </main>
   );

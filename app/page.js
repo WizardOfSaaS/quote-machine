@@ -41,6 +41,7 @@ export default function Home() {
   useEffect(() => { handleButtonClick() }, [])
 
   const failedMessage = "Failed to Fetch. Please try again after a few moments..."
+  const encodedQuote = encodeURIComponent(`"${quote.content}"\n\n-- ${quote.author}`)
   return (
     <main className="" id="quote-box">
       {
@@ -51,7 +52,10 @@ export default function Home() {
             quote={failedFetch ? { content: failedMessage, author: "Random Quote Machine" } : quote}
           />
       }
-      <button onClick={handleButtonClick}>New Quote</button>
+      <button id="new-quote" onClick={handleButtonClick}>New Quote</button>
+      {!isLoading && !failedFetch &&
+        <button id="tweet-quote"><a href={`https://twitter.com/intent/post?text=${encodedQuote}`} target="_blank">Share on X/Twitter</a></button>
+      }
     </main>
   );
 }

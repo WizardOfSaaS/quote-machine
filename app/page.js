@@ -1,5 +1,6 @@
 'use client'
 import QuoteItem from "./components/QuoteItem";
+import { useState } from 'react'
 
 const sampleResponse = [
   {
@@ -21,14 +22,11 @@ function handleButtonClick() {
 }
 
 export default function Home() {
-  const response = sampleResponse[0]
-  const quoteText = response["content"]
-  const quoteAuthor = response["author"]
+  const quote = sampleResponse[0]
   return (
     <main className="" id="quote-box">
       <QuoteItem
-        text={quoteText}
-        author={quoteAuthor}
+        quote={quote}
       />
       <button onClick={handleButtonClick}>New Quote</button>
     </main>

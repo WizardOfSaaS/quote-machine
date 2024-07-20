@@ -13,7 +13,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <div className="text-center">by <a href="https://github.com/WizardOfSaaS" target="_blank">WizardOfSaaS</a></div>
+        <div className="footer">
+          <div className="text-center"><a href="https://github.com/WizardOfSaaS/quote-machine" target="_blank">Source Code</a> by <a href="https://github.com/WizardOfSaaS" target="_blank">WizardOfSaaS</a></div>
+          <div className="text-center">Quotes from <a href="https://github.com/lukePeavey/quotable" target="_blank">Quotable</a></div>
+        </div>
       </body>
     </html>
   );

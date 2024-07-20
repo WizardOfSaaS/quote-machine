@@ -1,5 +1,9 @@
 # Random Quote Machine
 
-Display a random quote.
+Display a random quote
 
-Thanks to [https://api.quotable.io/] and [https://github.com/lukePeavey] for the API
+Static site built using NextJS
+
+Hosted [here](https://wizardofsaas.github.io/quote-machine)
+
+Thanks to [Quotable](https://github.com/lukePeavey/quotable) for the API
